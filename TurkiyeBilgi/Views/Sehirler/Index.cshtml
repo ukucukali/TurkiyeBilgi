@@ -1,0 +1,47 @@
+﻿@model List<Sehir>
+@{
+    ViewData["Ttile"]="Sehirler";
+}
+
+<h1>Sehirler</h1>
+
+<table class="table table-striped table-bordered" id="sehirler">
+    <thead>
+        <tr>
+            <th>Plaka No</th>
+            <th>Ad</th>
+            <th>Nufus</th>
+            <th>Bolge</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sehir in Model)
+        {
+            <tr>
+                <td>@sehir.Id</td>
+                <td>@sehir.SehirAd</td>
+                <td>@sehir.Nufus.ToString("n0")</td>
+                <td>@sehir.Bolge.BolgeAd</td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@section Scripts{
+
+<script>
+        $(document).ready(
+            function ()
+            {
+                $('#sehirler').DataTable(
+                    {
+                language:{
+                url:"//cdn.datatables.net/plug-ins/1.11.4/i18n/tr.json"
+                }
+                }
+                );
+            } );
+</script>
+
+}

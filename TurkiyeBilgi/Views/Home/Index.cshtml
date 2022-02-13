@@ -1,0 +1,30 @@
+﻿@model HomeViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+<form class="form-inline " method="get">
+    <label>Bolge</label>
+    <select asp-for="BolgeId" asp-items="Model.Bolgeler" name="bolgeId" class="form-control ml-2">
+        <option value="">Tumu</option>       
+    </select>
+    <button class="btn btn-primary ml-2">Listele</button>
+</form>
+
+
+<h1 class="mt-4">Turkiyenin illeri</h1>
+
+<p>
+    @foreach (var sehir in Model.Sehirler)
+    {
+        <a asp-controller="Sehir" asp-action="Index"  asp-route-id="@sehir.Id">@sehir.SehirAd </a>
+    }
+</p>
+
+<h1>Turkiyenin illeri</h1>
+
+<p>
+    @foreach (var sehir in Model.Sehirler)
+    {
+        <a asp-controller="Sehir" asp-action="Index"  asp-route-ad="@sehir.SehirAd">@sehir.SehirAd </a>
+    }
+</p>
